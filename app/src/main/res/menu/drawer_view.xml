@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_firstscreen"
+            android:icon="@drawable/ic_one"
+            android:title="Zero" />
+        <item
+            android:id="@+id/nav_youtube"
+            android:icon="@drawable/ic_one"
+            android:title="First" />
+        <item
+            android:id="@+id/nav_facebook"
+            android:icon="@drawable/ic_two"
+            android:title="Second" />
+        <item
+            android:id="@+id/nav_twitter"
+            android:icon="@drawable/ic_three"
+            android:title="Third" />
+        <item
+            android:id="@+id/nav_instagram"
+            android:icon="@drawable/ic_two"
+            android:title="Fourth" />
+        <item
+            android:id="@+id/nav_website"
+            android:icon="@drawable/ic_three"
+            android:title="Fifth" />
+    </group>
+</menu>
