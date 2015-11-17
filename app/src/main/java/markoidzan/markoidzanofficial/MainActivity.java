@@ -2,6 +2,7 @@ package markoidzan.markoidzanofficial;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -12,92 +13,81 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import markoidzan.markoidzanofficialdemo.R;
+
 /**
- * Created by midza on 13.11.2015..
+ * Created by midza on 16.11.2015..
  */
-public class MainActivity extends AppCompatActivity {
-    private DrawerLayout mDrawer;
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private Toolbar toolbar;
-    private NavigationView nvDrawer;
-    private ActionBarDrawerToggle drawerToggle;
+    private NavigationView mDrawer;
+    private DrawerLayout mDrawerLayout;
+    private  ActionBarDrawerToggle drawerToggle;
+    private int mSelectedId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setToolbar();
+        initView();
 
-        mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawerToggle = setupDrawerToggle();
-
-        nvDrawer = (NavigationView) findViewById(R.id.nvView);
-
-        setupDrawerContent(nvDrawer);
-
-        mDrawer.setDrawerListener(drawerToggle);
-    }
-
-    private ActionBarDrawerToggle setupDrawerToggle() {
-        return new ActionBarDrawerToggle(this, mDrawer, toolbar, R.string.drawer_open, R.string.drawer_close);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (drawerToggle.onOptionsItemSelected(item)) {
-            return true;
-        }
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                mDrawer.openDrawer(GravityCompat.START);
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
+        drawerToggle=new ActionBarDrawerToggle(this,mDrawerLayout,toolbar,R.string.openDrawer,R.string.closeDrawer);
+        mDrawerLayout.setDrawerListener(drawerToggle);
         drawerToggle.syncState();
+        //default it set first item as selected
+        mSelectedId=savedInstanceState ==null ? R.id.pocetno: savedInstanceState.getInt("SELECTED_ID");
+        itemSelection(mSelectedId);
+
     }
 
-    private void setupDrawerContent(NavigationView navigationView) {
-        navigationView.setNavigationItemSelectedListener(
-                new NavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(MenuItem menuItem) {
-                        selectDrawerItem(menuItem);
-                        return true;
-                    }
-                });
+    private void setToolbar() {
+        toolbar= (Toolbar) findViewById(R.id.toolbar);
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
+        }
     }
 
-    public void selectDrawerItem (MenuItem menuItem) {
+    private void initView() {
+        mDrawer= (NavigationView) findViewById(R.id.navigation_view);
+        mDrawer.setNavigationItemSelectedListener(this);
+        mDrawerLayout= (DrawerLayout) findViewById(R.id.drawer);
+    }
+
+    private void itemSelection(int mSelectedId) {
+
+
+
         Fragment fragment = null;
 
-        Class fragmentClass;
-        switch(menuItem.getItemId()) {
-            case R.id.nav_firstscreen:
+        Class fragmentClass = null;
+        switch(mSelectedId){
+            case R.id.pocetno:
+                mDrawerLayout.closeDrawer(GravityCompat.START);
                 fragmentClass = FirstScreen.class;
                 break;
-            case R.id.nav_youtube:
+            case R.id.youtube:
+                mDrawerLayout.closeDrawer(GravityCompat.START);
                 fragmentClass = YouTube.class;
                 break;
-            case R.id.nav_facebook:
+            case R.id.facebook:
+                mDrawerLayout.closeDrawer(GravityCompat.START);
                 fragmentClass = Facebook.class;
                 break;
-            case R.id.nav_twitter:
+            case R.id.twitter:
+                mDrawerLayout.closeDrawer(GravityCompat.START);
                 fragmentClass = Twitter.class;
                 break;
-            case R.id.nav_instagram:
+            case R.id.instagram:
+                mDrawerLayout.closeDrawer(GravityCompat.START);
                 fragmentClass = Instagram.class;
                 break;
-            case R.id.nav_website:
+            case R.id.website:
+                mDrawerLayout.closeDrawer(GravityCompat.START);
                 fragmentClass = WebSite.class;
                 break;
-            default:
-                fragmentClass = YouTube.class;
         }
 
         try {
@@ -107,16 +97,32 @@ public class MainActivity extends AppCompatActivity {
         }
 
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
+        fragmentManager.beginTransaction().replace(R.id.frame, fragment).commit();
 
-        menuItem.setChecked(true);
-        setTitle(menuItem.getTitle());
-        mDrawer.closeDrawers();
     }
+
+
+
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         drawerToggle.onConfigurationChanged(newConfig);
     }
+
+    @Override
+    public boolean onNavigationItemSelected(MenuItem menuItem) {
+        menuItem.setChecked(true);
+        mSelectedId=menuItem.getItemId();
+        itemSelection(mSelectedId);
+        return true;
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
+        //save selected item so it will remains same even after orientation change
+        outState.putInt("SELECTED_ID", mSelectedId);
+    }
+
 }
