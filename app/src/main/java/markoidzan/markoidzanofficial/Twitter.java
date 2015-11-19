@@ -1,5 +1,6 @@
 package markoidzan.markoidzanofficial;
 
+
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -14,24 +15,37 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
+import markoidzan.markoidzanofficialdemo.R;
+
+
 /**
- * @author Marko Idžan
- * @version 1.0
+ * A simple {@link Fragment} subclass.
  */
 public class Twitter extends Fragment {
 
-    public Twitter() { }
+
+    public Twitter() {
+        // Required empty public constructor
+    }
 
     private ProgressBar progressBar;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_twitter, container, false);
+
+
         final WebView webStranica;
+
         webStranica = (WebView) rootView.findViewById(R.id.activity_main_webview);
+
         progressBar = (ProgressBar) rootView.findViewById(R.id.progressbar);
+
         WebSettings javascriptUkljucen = webStranica.getSettings();
+
         javascriptUkljucen.setJavaScriptEnabled(true);
+
         webStranica.setWebViewClient(new WebViewClient() {
 
 
@@ -47,6 +61,8 @@ public class Twitter extends Fragment {
 
 
         });
+
+
         webStranica.setWebChromeClient(new WebChromeClient() {
             @Override
             public void onProgressChanged(WebView view, int progress) {
@@ -59,7 +75,9 @@ public class Twitter extends Fragment {
             }
 
         });
+
         webStranica.loadUrl("http://markoidzan.from.hr/twitter");
+
         webStranica.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
@@ -72,11 +90,16 @@ public class Twitter extends Fragment {
                                 webView.goBack();
                                 return true;
                             }
-                        }
+                    }
                 }
                 return false;
             }
         });
+
         return rootView;
+
+
     }
+
+
 }

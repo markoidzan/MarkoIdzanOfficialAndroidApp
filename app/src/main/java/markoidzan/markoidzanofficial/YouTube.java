@@ -1,5 +1,6 @@
 package markoidzan.markoidzanofficial;
 
+
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -14,24 +15,38 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
+import markoidzan.markoidzanofficialdemo.R;
+
+
 /**
- * @author Marko Idžan
- * @version 1.0
+ * A simple {@link Fragment} subclass.
  */
 public class YouTube extends Fragment {
 
-    public YouTube() { }
+
+    public YouTube() {
+        // Required empty public constructor
+    }
+
 
     private ProgressBar progressBar;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_you_tube, container, false);
+
+
         final WebView webStranica;
+
         webStranica = (WebView) rootView.findViewById(R.id.activity_main_webview);
+
         progressBar = (ProgressBar) rootView.findViewById(R.id.progressbar);
+
         WebSettings javascriptUkljucen = webStranica.getSettings();
+
         javascriptUkljucen.setJavaScriptEnabled(true);
+
         webStranica.setWebViewClient(new WebViewClient() {
 
 
@@ -47,6 +62,8 @@ public class YouTube extends Fragment {
 
 
         });
+
+
         webStranica.setWebChromeClient(new WebChromeClient() {
             @Override
             public void onProgressChanged(WebView view, int progress) {
@@ -59,12 +76,15 @@ public class YouTube extends Fragment {
             }
 
         });
+
         webStranica.loadUrl("http://markoidzan.from.hr/youtube");
+
         webStranica.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (event.getAction() == KeyEvent.ACTION_DOWN) {
                     WebView webView = (WebView) v;
+
                     switch (keyCode) {
                         case KeyEvent.KEYCODE_BACK:
                             if (webView.canGoBack()) {
@@ -76,6 +96,11 @@ public class YouTube extends Fragment {
                 return false;
             }
         });
+
         return rootView;
+
+
     }
+
+
 }
