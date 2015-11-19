@@ -11,6 +11,7 @@ Application includes:
  
 ##Download
 Amazon App Store - 
+
 Android File Host Mirror - http://bit.ly/MarkoIdzanOfficialv1AFHMirror
 
 ##Permissions
