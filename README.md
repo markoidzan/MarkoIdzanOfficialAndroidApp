@@ -12,7 +12,7 @@ Application includes:
 ##Download
 Amazon App Store - 
 
-Android File Host Mirror - http://bit.ly/MarkoIdzanOfficialv1AFHMirror
+Android File Host Mirror - http://bit.ly/MarkoIdzanOfficialAndroidv1AFHMirrorUpdated
 
 ##Permissions
 App permissions: Internet 
