@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">Marko Idžan Official</string>
+    <string name="app_name">Marko Idžan</string>
     <string name="personal_name">Marko Idžan</string>
-    <string name="private_mail">marko.idzan@gmail.com</string>
-    <string name="home">Dobrodošli!</string>
+    <string name="private_mail">marko@idzan.com.hr</string>
+    <string name="home">Početna</string>
     <string name="youtube">YouTube</string>
     <string name="facebook">Facebook</string>
     <string name="twitter">Twitter</string>

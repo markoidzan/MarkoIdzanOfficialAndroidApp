@@ -16,7 +16,8 @@ import android.view.MenuItem;
 import markoidzan.markoidzanofficialdemo.R;
 
 /**
- * Created by midza on 16.11.2015..
+ * Built by Marko in 2015
+ * Updated in 2017
  */
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private Toolbar toolbar;
@@ -66,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch(mSelectedId){
             case R.id.pocetno:
                 mDrawerLayout.closeDrawer(GravityCompat.START);
-                fragmentClass = FirstScreen.class;
+                fragmentClass = WebSite.class;
                 break;
             case R.id.youtube:
                 mDrawerLayout.closeDrawer(GravityCompat.START);
@@ -83,10 +84,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.instagram:
                 mDrawerLayout.closeDrawer(GravityCompat.START);
                 fragmentClass = Instagram.class;
-                break;
-            case R.id.website:
-                mDrawerLayout.closeDrawer(GravityCompat.START);
-                fragmentClass = WebSite.class;
                 break;
         }
 

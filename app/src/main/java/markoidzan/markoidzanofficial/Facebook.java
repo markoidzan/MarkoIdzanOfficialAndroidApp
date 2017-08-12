@@ -50,7 +50,7 @@ public class Facebook extends Fragment{
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                if (Uri.parse(url).getHost().contains("markoidzan.from.hr")) {
+                if (Uri.parse(url).getHost().contains("facebook.com")) {
                     return false;
                 }
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
@@ -75,7 +75,7 @@ public class Facebook extends Fragment{
 
         });
 
-        webStranica.loadUrl("http://markoidzan.from.hr/facebook");
+        webStranica.loadUrl("https://www.facebook.com/midzan21");
 
         webStranica.setOnKeyListener(new View.OnKeyListener() {
             @Override
