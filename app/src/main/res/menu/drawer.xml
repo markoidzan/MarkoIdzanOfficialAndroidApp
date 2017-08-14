@@ -8,15 +8,15 @@
             android:icon="@drawable/home"
             android:title="@string/home"/>
         <item
-            android:id="@+id/youtube"
+            android:id="@+id/oprema"
             android:checked="false"
             android:icon="@drawable/youtube"
-            android:title="@string/youtube"/>
+            android:title="@string/oprema"/>
         <item
-            android:id="@+id/facebook"
+            android:id="@+id/tablet"
             android:checked="false"
             android:icon="@drawable/facebook"
-            android:title="@string/facebook"/>
+            android:title="@string/tablet"/>
         <item
             android:id="@+id/twitter"
             android:checked="false"

@@ -52,7 +52,7 @@ public class WebSite extends Fragment {
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                if (Uri.parse(url).getHost().contains("idzan.com.hr")) {
+                if (Uri.parse(url).getHost().contains("maskice.hr")) {
                     return false;
                 }
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
@@ -77,7 +77,7 @@ public class WebSite extends Fragment {
 
         });
 
-        webStranica.loadUrl("https://idzan.com.hr");
+        webStranica.loadUrl("https://maskice.hr");
 
         webStranica.setOnKeyListener(new View.OnKeyListener() {
             @Override
